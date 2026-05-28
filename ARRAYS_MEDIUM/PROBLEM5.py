@@ -72,7 +72,7 @@ def maxProfit(price):
     return max_profit
 print(maxProfit([7,1,5,3,6,4]))
 
-
+#USING RECURSION METHOD
 def maxProfit(prices):
     if len(prices) < 2:
         return 0

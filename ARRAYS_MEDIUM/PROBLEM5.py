@@ -1,44 +1,46 @@
 #STOCK BUY AND SELL
 
-#The purpose of Stock Buy and Sell is:
-#To find the maximum profit by buying at a lower price and selling at a higher price.
+#THE PURPOSE OF STOCK BUY AND SELL IS:
+#TO FIND THE MAXIMUM PROFIT BY BUYING AT A LOWER PRICE AND SELLING AT A HIGHER PRICE.
 
 #PROCESS:
-#Traverse from left to right.
-#Keep track of minimum price seen so far.
-#Calculate profit for current day.
-#Compare with maximum profit.
-#Update maximum profit if current profit is bigger.
-#Continue till end of array.
-#Result becomes maximum possible profit.
+#TRAVERSE FROM LEFT TO RIGHT.
+#KEEP TRACK OF MINIMUM PRICE SEEN SO FAR.
+#CALCULATE PROFIT FOR CURRENT DAY.
+#COMPARE WITH MAXIMUM PROFIT.
+#UPDATE MAXIMUM PROFIT IF CURRENT PROFIT IS BIGGER.
+#CONTINUE TILL END OF ARRAY.
+#RESULT BECOMES MAXIMUM POSSIBLE PROFIT.
 
 #FORMULA:
-    #profit = selling price - buying price
+    #PROFIT = SELLING PRICE - BUYING PRICE
 
 #CONDITION:
-    #minimum price before current day
-    #That guarantees maximum possible profit
+    #MINIMUM PRICE BEFORE CURRENT DAY
+    #THAT GUARANTEES MAXIMUM POSSIBLE PROFIT
 
 #IMPORTANT RULES:
-    #Buy first.
-    #Sell later.
-    #Only one buy and one sell allowed.
+    #BUY FIRST.
+    #SELL LATER.
+    #ONLY ONE BUY AND ONE SELL ALLOWED.
 
 #IF NO PROFIT POSSIBLE:
-    #Return 0
+    #RETURN 0
 
 #WHY THIS WORKS:
-    #Smaller buying price gives bigger profit.
-    #Tracking minimum price helps find best buying day.
-    #Checking profit daily guarantees maximum profit.
+    #SMALLER BUYING PRICE GIVES BIGGER PROFIT.
+    #TRACKING MINIMUM PRICE HELPS FIND BEST BUYING DAY.
+    #CHECKING PROFIT DAILY GUARANTEES MAXIMUM PROFIT.
 
 #EDGE CASES:
-    #Prices decreasing -> no profit
-    #Single element -> cannot sell
-    #All same prices -> profit = 0
-    #Best buying day may come later
-#FINAL IDEA:Keep track of the minimum price seen so far 
-#continuously calculate the best possible profit.
+    #PRICES DECREASING -> NO PROFIT
+    #SINGLE ELEMENT -> CANNOT SELL
+    #ALL SAME PRICES -> PROFIT = 0
+    #BEST BUYING DAY MAY COME LATER
+
+#FINAL IDEA:
+#KEEP TRACK OF THE MINIMUM PRICE SEEN SO FAR
+#AND CONTINUOUSLY CALCULATE THE BEST POSSIBLE PROFIT.
     
 #USING BRUTE FORCE METHOD
 def maxProfit(price):

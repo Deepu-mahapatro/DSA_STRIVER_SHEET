@@ -1,0 +1,102 @@
+#LEADERS IN ARRAY
+
+#THE PURPOSE OF LEADERS IN ARRAY IS:
+#TO FIND ALL ELEMENTS THAT ARE GREATER THAN OR EQUAL TO EVERY ELEMENT ON THEIR RIGHT SIDE.
+
+#PROCESS:
+#TRAVERSE FROM RIGHT TO LEFT.
+#KEEP TRACK OF MAXIMUM ELEMENT SEEN SO FAR ON RIGHT SIDE.
+#COMPARE CURRENT ELEMENT WITH MAXIMUM RIGHT ELEMENT.
+#IF CURRENT ELEMENT IS GREATER THAN OR EQUAL TO MAXIMUM RIGHT ELEMENT:
+#CURRENT ELEMENT BECOMES LEADER.
+#UPDATE MAXIMUM RIGHT ELEMENT.
+#CONTINUE TILL BEGINNING OF ARRAY.
+#REVERSE RESULT IF NEEDED.
+#RESULT BECOMES ALL LEADERS IN CORRECT ORDER.
+
+#CONDITION:
+#CURRENT_ELEMENT >= MAXIMUM ELEMENT ON RIGHT SIDE
+#THAT GUARANTEES CURRENT ELEMENT IS LEADER
+
+#IMPORTANT RULES:
+#LAST ELEMENT IS ALWAYS LEADER.
+#LEADER MUST BE GREATER THAN OR EQUAL TO ALL RIGHT SIDE ELEMENTS.
+#TRAVERSE FROM RIGHT FOR OPTIMAL SOLUTION.
+
+#IF NO OTHER LEADER EXISTS:
+#ONLY LAST ELEMENT BECOMES LEADER.
+
+#WHY THIS WORKS:
+#TRACKING MAXIMUM RIGHT ELEMENT HELPS COMPARE EFFICIENTLY.
+#IF CURRENT ELEMENT IS BIGGER THAN RIGHT MAXIMUM:
+#NO GREATER ELEMENT EXISTS ON RIGHT SIDE.
+#THAT GUARANTEES LEADER CONDITION.
+
+#EDGE CASES:
+#SINGLE ELEMENT -> ALWAYS LEADER
+#INCREASING ARRAY -> ONLY LAST ELEMENT LEADER
+#DECREASING ARRAY -> EVERY ELEMENT LEADER
+#DUPLICATE VALUES -> EQUAL ELEMENTS CAN ALSO BE LEADERS
+
+#FINAL IDEA:
+#KEEP TRACK OF THE MAXIMUM ELEMENT SEEN FROM THE RIGHT SIDE
+#AND CONTINUOUSLY CHECK WHETHER CURRENT ELEMENT IS GREATER
+#THAN OR EQUAL TO THAT MAXIMUM.
+
+#BRUTE FORCE APPROACH
+def leaders(arr):
+    n=len(arr)
+    #EDGE CASE: EMPTY ARRAY
+    if n==0:
+        return []
+    result=[]
+    #CHECK EVERY ELEMENT
+    for i in range(n):
+        #ASSUME CURRENT ELEMENT IS LEADER
+        leader=arr[i]
+        #CHECK RIGHT SIDE ELEMENTS
+        for j in range(i+1,n):
+            #BIGGER ELEMENT FOUND
+            if arr[j]>arr[i]:
+                leader=None 
+                break
+        #ADD LEADER TO RESULT
+        if leader is not None:
+            result.append(arr[i])
+    return result
+print(leaders([16,17,4,3,2,5]))
+
+#OPTIMAL APPROACH METHOD
+def leaders(arr):
+    n=len(arr)
+    #EDGE CASE: EMPTY ARRAY
+    if n==0:
+        return []
+    result=[]
+    #LAST ELEMENT ALWAYS LEADER
+    max_right=arr[-1]
+    result.append(max_right)
+    #TRAVERSE FROM SECOND LARGEST ELEMENT
+    for i in range(n-2,-1,-1):
+        #CURRENT ELEMENT IS LEADER
+        if arr[i]>=max_right:
+            result.append(arr[i])
+            #UPDATE MAXIMUM
+            max_right=arr[i]
+    #REVERSE TO MAINTAIN ORIGINAL ORDER
+    result.reverse()
+    return result
+print(leaders([16,17,4,2,5]))    
+
+#PYTHONIC METHOD
+def leaders(arr):
+    if not arr:
+        return []
+    result = []
+    max_right = float('-inf')
+    for num in reversed(arr):
+        if num >= max_right:
+            result.append(num)
+            max_right = num
+    return result[::-1]
+print(leaders([16,17,4,3,2,5]))

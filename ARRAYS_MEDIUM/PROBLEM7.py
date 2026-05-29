@@ -89,11 +89,14 @@ print(rearrange(nums))
 def rearrange(nums):
     pos=[]
     neg=[]
+    zero=[]
     for num in nums:
         if num>0:
             pos.append(num)
-        else:
+        elif num<0:
             neg.append(num)
+        else:
+            zero.append(num)
     result=[]
     i=0
     j=0
@@ -108,6 +111,7 @@ def rearrange(nums):
     while j<len(neg):
         result.append(neg[j])
         j+=1
+    result.extend(zero)
     return result
-nums=[1,-2,3,-4,5]
+nums=[1,-2,3,0,0,0,-4,5]
 print(rearrange(nums))

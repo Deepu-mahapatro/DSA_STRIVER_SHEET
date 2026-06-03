@@ -60,3 +60,23 @@ def binary_strings(n):
     traverse("",False)
     return result
 print(binary_strings(3))
+
+#USING INDEX METHOD BEST VERSION
+def binary_strings(n):
+    #EDGE CASE
+    if n<0:
+        return []
+    result=[]
+    def traverse(index,current,pre_one):
+        #BASE CASE
+        if index==n:
+            result.append(current)
+            return
+        #ADD ZEROS
+        traverse(index+1,current+"0",False)
+        #ADD ONE BASED ON CONDITION
+        if not pre_one:
+            traverse(index+1,current+"1",True)
+    traverse(0,"",False)
+    return result
+print(binary_strings(3))

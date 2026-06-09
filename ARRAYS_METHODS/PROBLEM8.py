@@ -84,21 +84,23 @@ cards=[1,2,3,4,5,6,1]
 k=3
 print(max_card(cards,k))
 
-#OPTIMIZING SLIDING WINDOW
-def max_card(cards,k):
+#SLIDING WINDOW (LEFT-RIGHT PICKING)
+def max_cards(cards,k):
     n=len(cards)
-    #BASE CARDS
-    if k==n:
-        return sum(cards)
-    total=sum(cards)
-    window_size=n-k
-    window_sum=sum(cards[:window_size])
-    min_sum=window_sum
-    for i in range(window_size,n):
-        window_sum+=cards[i]
-        window_sum-=cards[i-window_size]
-        min_sum=min(min_sum,window_sum)
-    return total-min_sum
+    #TAKE FIRST CARDS FORM LEFT
+    curr_sum=sum(cards[:k])
+    #INITIAL ANSWER
+    ans=curr_sum
+    #REMOVE FROM PICK
+    #ADD FORM RIGHT PICK
+    for i in range(1,k+1):
+        #REMOVE ONE CARD FORM LEFT
+        curr_sum-=cards[k-i]
+        #ADD ONE CARD FORM RIGHT
+        curr_sum+=cards[n-i]
+        #UPDATE MAXIMUM SCORE
+        ans=max(ans,curr_sum)
+    return ans
 cards=[1,2,3,4,5,6,1]
 k=3
 print(max_card(cards,k))

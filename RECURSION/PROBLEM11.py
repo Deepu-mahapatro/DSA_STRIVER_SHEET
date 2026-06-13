@@ -1,0 +1,77 @@
+#SUBSETS (POWER SET)
+#USING ITERATIVE APPROACH
+#THE PURPOSE OF SUBSETS IS:
+#TO GENERATE ALL POSSIBLE SUBSETS
+#OF THE GIVEN ARRAY.
+#PROCESS:
+#START WITH AN EMPTY SUBSET.
+#FOR EACH NUMBER:
+#TAKE ALL EXISTING SUBSETS.
+#ADD THE CURRENT NUMBER
+#TO EACH EXISTING SUBSET.
+#CREATE NEW SUBSETS.
+#ADD THEM TO THE RESULT.
+#REPEAT FOR ALL NUMBERS.
+#CONDITION:
+#EVERY NUMBER CAN EITHER:
+#APPEAR IN A SUBSET
+#OR NOT APPEAR IN A SUBSET.
+#IMPORTANT RULES:
+#START WITH [[]].
+#DO NOT MODIFY EXISTING SUBSETS.
+#CREATE NEW SUBSETS USING
+#CURRENT NUMBER.
+#APPEND NEW SUBSETS TO RESULT.
+#GENERATE ALL POSSIBILITIES.
+#BASE CASE:
+#INITIAL RESULT CONTAINS
+#ONE EMPTY SUBSET.
+#WHY THIS WORKS:
+#EVERY NEW NUMBER DOUBLES
+#THE NUMBER OF SUBSETS.
+#OLD SUBSETS REMAIN.
+#NEW SUBSETS ARE CREATED
+#BY ADDING CURRENT NUMBER.
+#ALL POSSIBLE SUBSETS
+#ARE GENERATED.
+#TIME COMPLEXITY:
+#O(n * 2^n)
+#SPACE COMPLEXITY:
+#O(n * 2^n)
+#FINAL IDEA:
+#START WITH EMPTY SUBSET.
+#FOR EACH NUMBER:
+#ADD IT TO ALL EXISTING SUBSETS.
+#APPEND NEW SUBSETS TO RESULT.
+#CONTINUE UNTIL ALL NUMBERS
+#ARE PROCESSED.
+
+#USING BACKTRACKING METHOD
+def subsets(nums):
+    result=[]
+    def backtrack(index,path):
+        if index==len(nums):
+            result.append(path[:])
+            return 
+        #INCLUDE CURRENT ELEMENT
+        path.append(nums[index])
+        backtrack(index+1,path)
+        #EXCLUDE CURRENT ELEMENT
+        path.pop()
+        backtrack(index+1,path)
+    backtrack(0,[])
+    return result
+nums=[1,2,3]
+print(subsets(nums))
+
+#ITERATIVE APPROACH 
+def subsets(nums):
+    result=[[]]
+    for num in nums:
+        new_subsets=[]
+        for subset in result:
+            new_subsets.append(subset+[num])
+        result.extend(new_subsets)
+    return result
+nums=[1,2,3]
+print(subsets(nums))

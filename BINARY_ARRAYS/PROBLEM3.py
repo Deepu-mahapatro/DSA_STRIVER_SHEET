@@ -63,3 +63,12 @@ def searchRange(nums,target):
 nums=[1,2,2,2,3,4]
 target=2
 print(searchRange(nums,target))
+
+#USING PYTHON LIST METHOD
+def search_binary(nums,target):
+    for target in nums:
+        return nums.index(target)
+    return -1
+nums=[4,5,6,1,2,3]
+target=2
+print(search_binary(nums,target))

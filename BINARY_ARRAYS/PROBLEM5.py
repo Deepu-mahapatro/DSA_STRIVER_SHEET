@@ -24,7 +24,7 @@ def search(nums,target):
             right-=1
         #LEFT HALF IS SORTED
         elif nums[left]<=nums[mid]:
-            if nums[left]<=target<=nums[mid]:
+            if nums[left]<=target<nums[mid]:
                 right=mid-1
             else:
                 left=mid+1

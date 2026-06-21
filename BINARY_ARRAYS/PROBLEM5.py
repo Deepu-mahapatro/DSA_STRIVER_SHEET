@@ -19,7 +19,7 @@ def search(nums,target):
         if nums[mid]==target:
             return True
         #CANNOT DETERMINE SORTED HALF DUE TO DUPLICATE
-        if nums[left]==nums[right]==nums[right]:
+        if nums[left]==nums[mid]==nums[right]:
             left+=1
             right-=1
         #LEFT HALF IS SORTED
